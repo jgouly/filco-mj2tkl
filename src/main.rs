@@ -7,6 +7,11 @@ extern crate mkl27z;
 const NUM_COLS: usize = 8;
 const NUM_ROWS: usize = 18;
 
+struct FilcoMJ2TKLConfig {
+  column_pins: [mkl27z::gpio::InputPin; NUM_COLS],
+  row_pins: [mkl27z::gpio::OutputPin; NUM_ROWS],
+}
+
 fn get_column_pins() -> [mkl27z::gpio::InputPin; NUM_COLS] {
   [mkl27z::gpio::InputPin {
      port: mkl27z::gpio::PORTB_PCR16.into(),
@@ -188,9 +193,13 @@ fn get_row_pins() -> [mkl27z::gpio::OutputPin; NUM_ROWS] {
 }
 
 fn main() -> ! {
+  let conf = FilcoMJ2TKLConfig {
+    column_pins: get_column_pins(),
+    row_pins: get_row_pins(),
+  };
   loop {
-    let _ = get_column_pins()[0].read();
-    let _ = get_row_pins()[0].high();
+    let _ = conf.column_pins[0].read();
+    let _ = conf.row_pins[0].high();
   }
 }
 reset_fn!(main);
