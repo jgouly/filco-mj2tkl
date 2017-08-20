@@ -4,7 +4,9 @@
 #[macro_use(reset_fn)]
 extern crate mkl27z;
 
+#[macro_use(gen_matrix)]
 extern crate keyboard_app;
+use keyboard_app::matrix::Matrix;
 
 const NUM_COLS: usize = 8;
 const NUM_ROWS: usize = 18;
@@ -12,6 +14,22 @@ const NUM_ROWS: usize = 18;
 struct FilcoMJ2TKLConfig {
   column_pins: [mkl27z::gpio::InputPin; NUM_COLS],
   row_pins: [mkl27z::gpio::OutputPin; NUM_ROWS],
+}
+
+gen_matrix!(ResultMatrix, NUM_ROWS, NUM_COLS, u32);
+
+fn single_scan(conf: &FilcoMJ2TKLConfig) -> ResultMatrix {
+  for r in conf.row_pins.iter() {
+    r.high()
+  }
+  let mut rm = ResultMatrix::new();
+  for r in conf.row_pins.iter().enumerate() {
+    r.1.low();
+    for c in conf.column_pins.iter().enumerate() {
+      rm.put(r.0, c.0, (c.1.read() == 0) as u32)
+    }
+  }
+  rm
 }
 
 fn get_column_pins() -> [mkl27z::gpio::InputPin; NUM_COLS] {
@@ -200,8 +218,7 @@ fn main() -> ! {
     row_pins: get_row_pins(),
   };
   loop {
-    let _ = conf.column_pins[0].read();
-    let _ = conf.row_pins[0].high();
+    let _ = single_scan(&conf);
   }
 }
 reset_fn!(main);
