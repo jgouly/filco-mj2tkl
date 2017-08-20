@@ -1,0 +1,25 @@
+language: rust
+
+sudo: false
+addons:
+  apt:
+    sources:
+      - debian-sid
+    packages:
+      - binutils-arm-none-eabi
+      - gcc-arm-none-eabi
+      - libnewlib-arm-none-eabi
+
+rust:
+  - nightly-2017-07-28
+cache: cargo
+
+install:
+  - bash -c 'cd .. && cargo install xargo -f --vers 0.3.8 && rustup component add rust-src'
+
+script:
+  - make
+
+branches:
+  only:
+    - master
