@@ -9,6 +9,7 @@ opt-level = "s"
 
 [dependencies]
 mkl27z = { git = "https://gitlab.com/jgouly/mkl27z-rs.git" }
+keyboard-app = { git = "https://gitlab.com/jgouly/keyboard-app.git" }
 
 [features]
 default = ["mkl27z/usb"]

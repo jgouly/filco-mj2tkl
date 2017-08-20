@@ -4,6 +4,8 @@
 #[macro_use(reset_fn)]
 extern crate mkl27z;
 
+extern crate keyboard_app;
+
 const NUM_COLS: usize = 8;
 const NUM_ROWS: usize = 18;
 

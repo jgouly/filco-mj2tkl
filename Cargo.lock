@@ -2,6 +2,7 @@
 name = "filco-mj2tkl"
 version = "0.1.0"
 dependencies = [
+ "keyboard-app 0.1.0 (git+https://gitlab.com/jgouly/keyboard-app.git)",
  "mkl27z 0.1.0 (git+https://gitlab.com/jgouly/mkl27z-rs.git)",
 ]
 
@@ -9,6 +10,11 @@ dependencies = [
 name = "gcc"
 version = "0.3.52"
 source = "registry+https://github.com/rust-lang/crates.io-index"
+
+[[package]]
+name = "keyboard-app"
+version = "0.1.0"
+source = "git+https://gitlab.com/jgouly/keyboard-app.git#552ba6c1c5c18209d42cae52150d3001de96d714"
 
 [[package]]
 name = "mkl27z"
@@ -20,4 +26,5 @@ dependencies = [
 
 [metadata]
 "checksum gcc 0.3.52 (registry+https://github.com/rust-lang/crates.io-index)" = "1b7d19683108136d21d32723077e69cd5df2bfd6d102c74a01d743cf2b65cf97"
+"checksum keyboard-app 0.1.0 (git+https://gitlab.com/jgouly/keyboard-app.git)" = "<none>"
 "checksum mkl27z 0.1.0 (git+https://gitlab.com/jgouly/mkl27z-rs.git)" = "<none>"
