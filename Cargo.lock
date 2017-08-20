@@ -1,0 +1,23 @@
+[root]
+name = "filco-mj2tkl"
+version = "0.1.0"
+dependencies = [
+ "mkl27z 0.1.0 (git+https://gitlab.com/jgouly/mkl27z-rs.git)",
+]
+
+[[package]]
+name = "gcc"
+version = "0.3.52"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+
+[[package]]
+name = "mkl27z"
+version = "0.1.0"
+source = "git+https://gitlab.com/jgouly/mkl27z-rs.git#da4be95fd3fd3a5fc00409ba6004f59e1f49be8c"
+dependencies = [
+ "gcc 0.3.52 (registry+https://github.com/rust-lang/crates.io-index)",
+]
+
+[metadata]
+"checksum gcc 0.3.52 (registry+https://github.com/rust-lang/crates.io-index)" = "1b7d19683108136d21d32723077e69cd5df2bfd6d102c74a01d743cf2b65cf97"
+"checksum mkl27z 0.1.0 (git+https://gitlab.com/jgouly/mkl27z-rs.git)" = "<none>"

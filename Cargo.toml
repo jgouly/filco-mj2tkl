@@ -1,0 +1,14 @@
+[package]
+name = "filco-mj2tkl"
+version = "0.1.0"
+authors = ["Joey Gouly <joey.gouly@gmail.com>"]
+
+[profile.release]
+lto = true
+opt-level = "s"
+
+[dependencies]
+mkl27z = { git = "https://gitlab.com/jgouly/mkl27z-rs.git" }
+
+[features]
+default = ["mkl27z/usb"]
