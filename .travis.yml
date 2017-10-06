@@ -11,7 +11,7 @@ addons:
       - libnewlib-arm-none-eabi
 
 rust:
-  - nightly-2017-07-28
+  - nightly-2017-10-05
 cache: cargo
 
 install:
